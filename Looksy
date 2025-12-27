@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Looksy</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+    body { margin: 0; min-height: 100vh; background: linear-gradient(#f5f5f5, #e9e9e9); display: flex; flex-direction: column; align-items: center; }
+    .logo { margin-top: 80px; font-size: 64px; font-weight: bold; letter-spacing: 1px; }
+    .logo span:nth-child(1) { color: #4285f4; }
+    .logo span:nth-child(2) { color: #ea4335; }
+    .logo span:nth-child(3) { color: #fbbc05; }
+    .logo span:nth-child(4) { color: #34a853; }
+    .logo span:nth-child(5) { color: #ea4335; }
+    .logo span:nth-child(6) { color: #4285f4; }
+    .search-box { margin-top: 30px; width: 100%; max-width: 560px; display: flex; border-radius: 24px; overflow: hidden; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .search-box input { flex: 1; border: none; padding: 14px 18px; font-size: 16px; outline: none; }
+    .search-box button { border: none; padding: 0 26px; background: #4285f4; color: #fff; font-size: 15px; cursor: pointer; }
+    .results-wrapper { width: 100%; margin-top: 60px; background: #f0f0f0; padding: 30px 0 60px; display: none; }
+    .results { max-width: 720px; margin: auto; background: #fff; padding: 20px 28px; border-radius: 6px; }
+    .results-title { font-size: 14px; color: #555; margin-bottom: 16px; }
+    .result { margin-bottom: 22px; }
+    .result a { font-size: 18px; color: #1a0dab; text-decoration: none; }
+    .result a:hover { text-decoration: underline; }
+    .result .url { font-size: 14px; color: #006621; }
+    .result .desc { font-size: 14px; color: #444; margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <span>L</span><span>o</span><span>o</span><span>k</span><span>s</span><span>y</span>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="query" placeholder="Search the web..." onkeydown="if(event.key==='Enter'){ showFakeResults(); }" />
+    <button onclick="showFakeResults()">Search</button>
+  </div>
+
+  <!-- Fake Results area -->
+  <div id="fakeWrapper" class="results-wrapper" style="display:none;">
+    <div id="fakeResults" class="results"></div>
+  </div>
+
+  <script>
+    // This is a small demonstration of code similar to what powers AI like me
+    // It doesn't include real AI processing but shows basic logic
+
+    function showFakeResults() {
+      const q = document.getElementById('query').value.trim();
+      if (!q) return;
+
+      document.getElementById('fakeResults').innerHTML = `
+        <div class="results-title">About 3,240,000 results for "${q}"</div>
+        <div class="result">
+          <a href="#">${q} – Official Site</a>
+          <div class="url">www.example.com</div>
+          <div class="desc">Find information related to ${q}. Updated results and resources.</div>
+        </div>
+        <div class="result">
+          <a href="#">Best ${q} Reviews</a>
+          <div class="url">www.reviews.com</div>
+          <div class="desc">Compare top results and guides for ${q}.</div>
+        </div>
+      `;
+
+      document.getElementById('fakeWrapper').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
